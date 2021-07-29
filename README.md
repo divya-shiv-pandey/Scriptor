@@ -1,32 +1,33 @@
 # Scriptor
-Text to Handwriting converter. Enter text and generate hand written PDF document in seconds.To convert text to handwriting it has pre-stored letters, numbers and characters cropped as small png to create a dateset, reads the text and starts placing these letters accordingly on a blank white background. 
+Text to Handwriting converter. Enter text and generate hand written PDF document in seconds.To convert text to handwriting it has pre-stored letters, numbers and characters cropped as small png to create a date set, reads the text and starts placing these letters accordingly on a blank white background.
 
-Before that all the text in the text is parsed into Pages then Words then letters. All these letters are send to a function which takes letters as input and throws handwritten image as output.
+Before that all the text is parsed into Pages -> Words -> letters. All these letters are sent to a function which takes letters as input and throws handwritten images and PDF as output.
 It has various dependencies like PILLOW, FPDF and runs on Python 3.6 or above.
 
 ## HOW TO USE
-### Step 1: 
-UNZIP the folder. make sure not to alter any files.
+### Step 1:
+UNZIP the folder. Install FPDF and Pillow python libraries.
 #### Step 2:
 Paste to be written text in BLACK.TXT file and save it.
 #### Step 3:
-Run the SCRIPTOR.PY and wait for it to execute and auto exit.
+Run the SCRIPTOR.PY and wait for it to execute and auto exit. Make sure you have supported libraries and above python 3.6.
 #### Step 4:
 Handwritten pages and PDF is stored in the OUTPUT folder. ENJOY :)
 
 ## Folder/File structure is as follows
-#### FILE: 
+#### FILE:
 It contains letter's image dataset used by script to write.
 #### OUTPUT:
 The generated PDF and images of hand written page by the script is stored in this folder.
 #### BLACK.TXT:
-Script converts text in this file to hand writtting.
+Script converts text in this file to hand writing.
 #### SCRIPTOR.PY:
 Main script responsible for converting and storing.
 #### CROPPER:
 Contains scratch scripts that user can use to create its own handwritten image dataset
 
-Disclaimer: Any illegal/non accepable use of the script is not recommended and is useres responsibilty.Do not use for offical work or ASSIGNMENTS or similar.
+Disclaimer: Any illegal/non acceptable use of the script is not recommended and is users responsibilty.Do not use for official work or ASSIGNMENTS or similar.
+
 
 
 
