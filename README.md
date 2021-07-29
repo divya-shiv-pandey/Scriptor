@@ -14,7 +14,7 @@ Run the SCRIPTOR.PY and wait for it to execute and auto exit.
 #### Step 4:
 Handwritten pages and PDF is stored in the OUTPUT folder. ENJOY :)
 
-## Foldar layout is as follows
+## Folder/File structure is as follows
 #### FILE: 
 It contains letter's image dataset used by script to write.
 #### OUTPUT:
