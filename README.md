@@ -5,26 +5,26 @@ Before that all the text in the text is parsed into Pages then Words then letter
 
 It has various dependencies like PILLOW, FPDF and runs on Python 3.6 or above.
 
-##Foldar layout is as follows
-###FILE: 
+## Foldar layout is as follows
+### FILE: 
 It contains letter's image dataset used by script to write.
-###OUTPUT:
+### OUTPUT:
 The generated PDF and images of hand written page by the script is stored in this folder.
-###BLACK.TXT:
+### BLACK.TXT:
 Script converts text in this file to hand writtting.
-###SCRIPTOR.PY:
+### SCRIPTOR.PY:
 Main script responsible for converting and storing.
-###CROPPER:
+### CROPPER:
 Contains scratch scripts that user can use to create its own handwritten image dataset
 
-##HOW TO USE
-###Step 1: 
+## HOW TO USE
+### Step 1: 
 UNZIP the folder
-###Step 2:
+### Step 2:
 Paste to be written text in BLACK.TXT file and save it.
-###Step 3:
+### Step 3:
 Run the SCRIPTOR.PY and wait for it to execute and auto exit.
-###Step 4:
+### Step 4:
 Handwritten pages and PDF is stored in the OUTPUT folder. ENJOY :)
 
 Disclaimer: Any illegal/non accepable use of the script is not recommended and is useres responsibilty.Do not use for offical work or ASSIGNMENTS or similar.
