@@ -171,6 +171,9 @@ def info1():
 	except Exception as e:
 		showerror("Error", e)
 
+def callback():
+    webbrowser.open_new("https://github.com/divya-shiv-pandey/Scriptor")
+
 
 
 f = ("Arial", 15, "bold")
@@ -195,7 +198,7 @@ ww = LabelFrame(root)
 ww.pack(fill="both", expand = "yes") 
 write = Button(ww, text = "Write", font = f, width = 20, command = hand_write)
 info = Button(ww, text = "Info", font = f, width = 10, command = info1)
-git = Button(ww, text = "GIT", font = f, width = 10)
+git = Button(ww, text = "GIT", font = f, width = 10, command = callback)
 
 
 vbar = Scrollbar(w,orient=VERTICAL)
