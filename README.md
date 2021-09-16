@@ -1,7 +1,7 @@
 # Scriptor
 Text to Handwriting converter. Enter text and generate hand written PDF document in seconds.
 
-[#Download Scriptor](https://raw.githubusercontent.com/divya-shiv-pandey/Scriptor/main/Scriptor.exe)
+[Download Scriptor here](https://raw.githubusercontent.com/divya-shiv-pandey/Scriptor/main/Scriptor.exe)
 
 ## HOW TO USE
 #### Step 1: 
