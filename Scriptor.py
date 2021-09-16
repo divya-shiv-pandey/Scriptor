@@ -39,8 +39,8 @@ def Letters(word):
         global tilter
         y+=tilter
         tilter=0
-        x=random.randint(130, 180)
-        y+=random.randint(80,100)
+        x=random.randint(130, 160)
+        y+=random.randint(65,75)
     for letter in word:
         if letter in allowedchar:
             if letter.islower():
@@ -75,8 +75,8 @@ def Word(Input):
             for word in words:
                 Letters(word)
                 if(word != words[-1]):
-                    x=random.randint(50, 80)
-                    y+=random.randint(100,120)
+                    x=random.randint(120, 150)
+                    y+=random.randint(120,130)
         else:
             Letters(i)
         Write('space')
@@ -99,17 +99,17 @@ if __name__=='__main__':
 
             for i in range(0,len(p)):
                 Word(p[i])
-                img.save("output\\%doutt.png"%i)
+                img.save("%doutt.png"%i)
                 bgnum=random.randint(1,4)
                 img1=Image.open("file\\bg%s.jpg"%bgnum)
                 img=img1
                 sizeOfSheet=img.width
-                x,y=100,160
+                x,y=100,120
     except ValueError as E:
         print("{}\nTry again",format(E))
     imageList=[]
     for i in range(0,len(p)):
-        imageList.append("output\\%doutt.png"%i)
+        imageList.append("%doutt.png"%i)
 
     cover=Image.open(imageList[0])
     width,height=cover.size
@@ -117,7 +117,7 @@ if __name__=='__main__':
     for i in range(0,len(imageList)):
         pdf.add_page()
         pdf.image(imageList[i],0,0)
-    pdf.output("output\\newwy2.pdf","F")
+    pdf.output("newwy2.pdf","F")
     print("Done")
 
 
