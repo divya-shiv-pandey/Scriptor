@@ -1,13 +1,15 @@
 # Scriptor
 Text to Handwriting converter. Enter text and generate hand written PDF document in seconds.
 
+#[Download Scriptor](https://raw.githubusercontent.com/divya-shiv-pandey/Scriptor/main/Scriptor.exe)
+
 ## HOW TO USE
 #### Step 1: 
-Download the installer and install it normaly, make sure to make desktop shortcut. Run Scriptor.exe
+Download from above link and run Scriptor.exe.
 #### Step 2:
-Write/Paste text in text box  that is to be converted to hand writing.  Hit WRITE and wait patiently for program to execute
+Write/Paste text in text box  that is to be converted to hand writing.  Hit WRITE and wait patiently for program to execute.
 #### Step 3:
-WALLAH! Handwritten pages and PDF is stored in the OUTPUT folder. ENJOY :)
+WALLAH! Handwritten pages and PDF is stored in the same folder where Scriptor is located. ENJOY :)
 
 
 ## HOW IT WORKS
