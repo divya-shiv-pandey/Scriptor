@@ -191,7 +191,9 @@ def script():
     print("Done")
     res = askquestion('Sucess', 'Open destination folder?')
     if res == 'yes':
-        os.system('start '+sys.path[0]+'\output\ ')
+        modstring = sys.path[0]
+        #modstring = modstring[:-16]
+        os.system('start '+modstring+'\output\ ')
     else:
         showinfo(title="Success", message="Text converted! You can find them in output folder.")
     w.config(text ="Text to Handwriting")
