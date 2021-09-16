@@ -39,7 +39,7 @@ x,y=100,160
 count = 0
 total = 0
 tilter=0
-allowedchar='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'
+allowedchar='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?1234567890'
 
 
 
@@ -109,8 +109,6 @@ def Letters(word):
                 letter="fullstop"
             elif letter==',':
                 letter="comma"
-            elif letter==':':
-                letter="colon"
             elif letter=='!':
                 letter="exclamation"
             elif letter=='?':
@@ -140,7 +138,7 @@ def Word(Input):
 
 def cheak(func):
 	def inner():
-		rule = str("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890 ")
+		rule = str("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?1234567890 ")
 		data = text_box.get('1.0', 'end')
 		w.config(text ="Working on it...")
 		try:
@@ -214,7 +212,7 @@ def script():
 
 def info1():
 	try:
-		rule = str("Rules: \n\n I)Allowed characters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'\n\nAny characters except these will be skipped\n\nII) Minimum of 900 charachters.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After clicking 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\n This is an Open-souce software. Do a visit to our Git-Hub for more information!!")
+		rule = str("Rules: \n\n I)Allowed characters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?1234567890'\n\nAny characters except these will be skipped\n\nII) Minimum of 900 charachters.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After clicking 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\nV) Garbage In, Garbage Out. Make sure to properly allign your input text. \n\nThis is an Open-souce software. Do a visit to our Git-Hub for more information!!")
 		showinfo(title="Information", message=rule)
 	except Exception as e:
 		showerror("Error", e)
