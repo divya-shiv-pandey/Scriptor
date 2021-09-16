@@ -1,3 +1,14 @@
+'''
+*
+*
+*
+SCRIPTOR created by Divya Shiv Pandey & Sawan Raj on 16/Sept/2021
+Text to Handwriting converter. Enter text and generate hand written PDF document in seconds.
+*
+*
+*
+'''
+
 from tkinter import filedialog
 from PIL import ImageTk
 import PIL.Image
