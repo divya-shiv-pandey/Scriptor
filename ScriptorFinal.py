@@ -1,11 +1,13 @@
-#helloooooo
+
 from PIL import ImageTk
 import PIL.Image
+import webbrowser
 import random
 import re
 from fpdf import FPDF
 from tkinter import *
 import tkinter as tk
+from tkinter import ttk
 import os
 from tkinter.messagebox import *
 
@@ -15,6 +17,15 @@ sizeOfSheet=img.width
 x,y=100,160
 tilter=0
 allowedchar='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'
+
+def darkstyle(root):
+    ''' Return a dark style to the window'''
+    style = ttk.Style(root)
+    root.tk.call('source', 'azure dark/azure dark.tcl')
+    style.theme_use('azure')
+    style.configure("Accentbutton", foreground='white')
+    style.configure("Togglebutton", foreground='white')
+    return style
 
 def redefine():
     global bgnum
@@ -141,21 +152,22 @@ def script(data):
     print("Done")
     showinfo(title="Information", message="Completed")
     
-    
 
 
 def cheak(func):
 	def inner():
 		rule = str("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890 ")
 		data = text_box.get('1.0', 'end')
+		w.config(text ="Working on it...")
 		try:
 			if len(data) >= 898:
 				func()
-				tk.messagebox.showinfo('Return','You will now return to the application screen')
 				redefine()
 				script(data)
+				w.config(text ="Text to Handwriting")
+				
 			else:
-				showerror(title="Failed", message="Please read INFO and PROCEED")
+				showerror(title="Failed", message="Please follow rules!")
 		except Exception as e:
 			showerror("Error ", e)
 	return inner
@@ -166,7 +178,7 @@ def hand_write():
 
 def info1():
 	try:
-		rule = str("Rules: \n\n I)Allowed charechters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'\nAny charechters except these would be skipped\n\nII) Minimum 900 charachters to write.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After hitting 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\n This is an Open-souce software. Do a visit to our Git-Hub for more information!!")
+		rule = str("Rules: \n\n I)Allowed characters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'\nAny characters except these will be skipped\n\nII) Minimum of 900 charachters.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After hitting 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\n This is an Open-souce software. Do a visit to our Git-Hub for more information!!")
 		showinfo(title="Information", message=rule)
 	except Exception as e:
 		showerror("Error", e)
@@ -177,28 +189,30 @@ def callback():
 
 
 f = ("Arial", 15, "bold")
+f1 = ("Arial", 12, "bold")
 root = Tk()
 root.title('SCRIPTOR')
 root.minsize(600,575)
 root.geometry('600x575')
 
+style = darkstyle(root)
+
 imgn = ImageTk.PhotoImage(PIL.Image.open("file\\img.ico"))
 panel = tk.Label(root, image = imgn, height = 30)
 panel.pack(side = "top", fill = "both", expand = "yes")
 
-w = LabelFrame(root, text = "Convert your text to hand writtten with Scriptor", font=f)
+w = LabelFrame(root, text = "Text to Handwriting", font=f)
 w.pack(fill="both", expand = "yes")
 text_box = Text(w, wrap = WORD)
 text_box.insert(END, 'Type here..')
 
 
 frame = Frame(root)
-
 ww = LabelFrame(root)  
 ww.pack(fill="both", expand = "yes") 
-write = Button(ww, text = "Write", font = f, width = 20, command = hand_write)
-info = Button(ww, text = "Info", font = f, width = 10, command = info1)
-git = Button(ww, text = "GIT", font = f, width = 10, command = callback)
+write = ttk.Button(ww, text = "Write", width = 20, style="Accentbutton", command = hand_write)
+info = ttk.Button(ww, text = "Rules", width = 10, style="Accentbutton", command = info1)
+git = ttk.Button(ww, text = "Git", width = 10, style="Accentbutton", command = callback)
 
 
 vbar = Scrollbar(w,orient=VERTICAL)
