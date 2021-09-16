@@ -1,4 +1,4 @@
-
+from tkinter import filedialog
 from PIL import ImageTk
 import PIL.Image
 import webbrowser
@@ -12,12 +12,12 @@ import os
 from tkinter.messagebox import *
 
 bgnum=random.randint(1,4)
-img=PIL.Image.open("file\\bg%s.jpg"%bgnum)
+img=PIL.Image.open("res\\bg%s.jpg"%bgnum)
 sizeOfSheet=img.width
 x,y=100,160
 tilter=0
 allowedchar='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'
-
+      
 def darkstyle(root):
     ''' Return a dark style to the window'''
     style = ttk.Style(root)
@@ -34,7 +34,7 @@ def redefine():
     global x,y
     global tilter
     bgnum=random.randint(1,4)
-    img=PIL.Image.open("file\\bg%s.jpg"%bgnum)
+    img=PIL.Image.open("res\\bg%s.jpg"%bgnum)
     sizeOfSheet=img.width
     x,y=100,160
     tilter=0
@@ -50,7 +50,7 @@ def Write(char):
         pass
     else:
         char.lower()
-        cases=PIL.Image.open("file\\%s.png"%char)
+        cases=PIL.Image.open("res\\%s.png"%char)
         cases.thumbnail(size=(int(cases.width/1.65),int(cases.height/1.65)))
         img.paste(cases,(x,y))
         size=cases.width
@@ -130,9 +130,9 @@ def script(data):
 
         for i in range(0,len(p)): 
             Word(p[i])
-            img.save("%doutt.png"%i)
+            img.save("output\\%doutt.png"%i)
             bgnum=random.randint(1,4)
-            img1=PIL.Image.open("file\\bg%s.jpg"%bgnum)
+            img1=PIL.Image.open("res\\bg%s.jpg"%bgnum)
             img=img1
             sizeOfSheet=img.width
             x,y=100,120
@@ -140,7 +140,7 @@ def script(data):
         print("{}\nTry again",format(E))
     imageList=[]
     for i in range(0,len(p)):
-        imageList.append("%doutt.png"%i)
+        imageList.append("output\\%doutt.png"%i)
 
     cover=PIL.Image.open(imageList[0])
     width,height=cover.size
@@ -148,7 +148,7 @@ def script(data):
     for i in range(0,len(imageList)):
         pdf.add_page()
         pdf.image(imageList[i],0,0)
-    pdf.output("newwy2.pdf","F")
+    pdf.output("output\\newwy2.pdf","F")
     print("Done")
     showinfo(title="Information", message="Completed")
     
@@ -197,7 +197,7 @@ root.geometry('600x575')
 
 style = darkstyle(root)
 
-imgn = ImageTk.PhotoImage(PIL.Image.open("file\\img.ico"))
+imgn = ImageTk.PhotoImage(PIL.Image.open("res\\img.ico"))
 panel = tk.Label(root, image = imgn, height = 30)
 panel.pack(side = "top", fill = "both", expand = "yes")
 
