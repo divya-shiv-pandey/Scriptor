@@ -194,6 +194,7 @@ root = Tk()
 root.title('SCRIPTOR')
 root.minsize(600,575)
 root.geometry('600x575')
+root.iconbitmap('res\\img.ico')
 
 style = darkstyle(root)
 
