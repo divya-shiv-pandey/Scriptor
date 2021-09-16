@@ -15,6 +15,8 @@ bgnum=random.randint(1,4)
 img=PIL.Image.open("res\\bg%s.jpg"%bgnum)
 sizeOfSheet=img.width
 x,y=100,160
+count = 0
+total = 0
 tilter=0
 allowedchar='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'
       
@@ -33,6 +35,8 @@ def redefine():
     global sizeOfSheet
     global x,y
     global tilter
+    global count
+    count = 0
     bgnum=random.randint(1,4)
     img=PIL.Image.open("res\\bg%s.jpg"%bgnum)
     sizeOfSheet=img.width
@@ -118,7 +122,9 @@ def script(data):
         global img
         global sizeOfSheet
         global x,y
+        global count
         global tilter
+        global total
         #read the text file
         #data=file.read()
         #calculate number of pages
@@ -127,8 +133,9 @@ def script(data):
         # print(len(data))
         chunks,chunkysize=len(data),len(data)//nn+1
         p=[data[i:i+chunkysize] for i in range(0,chunks,chunkysize)]
-
-        for i in range(0,len(p)): 
+        total = len(p)
+        for i in range(0,len(p)):
+            count= count+1
             Word(p[i])
             img.save("output\\%doutt.png"%i)
             bgnum=random.randint(1,4)
@@ -152,7 +159,7 @@ def script(data):
     print("Done")
     res = askquestion('Completed', 'Do you want to open the folder?')
     if res == 'yes':
-        os.system("start C:/Users\91764\Pictures\Screenshots/")
+        os.system('start '+sys.path[0]+'\output\ ')
     else:
         showinfo(title="Information", message="Thank you")
     
