@@ -150,7 +150,11 @@ def script(data):
         pdf.image(imageList[i],0,0)
     pdf.output("output\\newwy2.pdf","F")
     print("Done")
-    showinfo(title="Information", message="Completed")
+    res = askquestion('Completed', 'Do you want to open the folder?')
+    if res == 'yes':
+        os.system("start C:/Users\91764\Pictures\Screenshots/")
+    else:
+        showinfo(title="Information", message="Thank you")
     
 
 
