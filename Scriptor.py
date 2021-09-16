@@ -1,26 +1,56 @@
-from PIL import Image
+from tkinter import filedialog
+from PIL import ImageTk
+import PIL.Image
+import webbrowser
 import random
 import re
 from fpdf import FPDF
+from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+import os
+from tkinter.messagebox import *
 
 bgnum=random.randint(1,4)
-img=Image.open("file\\bg%s.jpg"%bgnum)
+img=PIL.Image.open("res\\bg%s.jpg"%bgnum)
 sizeOfSheet=img.width
-
 x,y=100,160
 tilter=0
 allowedchar='QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'
+      
+def darkstyle(root):
+    ''' Return a dark style to the window'''
+    style = ttk.Style(root)
+    root.tk.call('source', 'azure dark/azure dark.tcl')
+    style.theme_use('azure')
+    style.configure("Accentbutton", foreground='white')
+    style.configure("Togglebutton", foreground='white')
+    return style
 
+def redefine():
+    global bgnum
+    global img
+    global sizeOfSheet
+    global x,y
+    global tilter
+    bgnum=random.randint(1,4)
+    img=PIL.Image.open("res\\bg%s.jpg"%bgnum)
+    sizeOfSheet=img.width
+    x,y=100,160
+    tilter=0
+    
 def Write(char):
     global x,y
     global tilter
+    global img
+    
     tilter+=1
     y-=1
     if char=='\n':
         pass
     else:
         char.lower()
-        cases=Image.open("file\\%s.png"%char)
+        cases=PIL.Image.open("res\\%s.png"%char)
         cases.thumbnail(size=(int(cases.width/1.65),int(cases.height/1.65)))
         img.paste(cases,(x,y))
         size=cases.width
@@ -81,46 +111,130 @@ def Word(Input):
             Letters(i)
         Write('space')
 
-
-
-
-if __name__=='__main__':
-
+def script(data):
     try:
-        with open("black.txt",'r') as file:
-            #read the text file
-            data=file.read()
-            #calculate number of pages
-            nn=len(data)//900
-            #print(nn)
-           # print(len(data))
-            chunks,chunkysize=len(data),len(data)//nn+1
-            p=[data[i:i+chunkysize] for i in range(0,chunks,chunkysize)]
+        global img
+        global bgnum
+        global img
+        global sizeOfSheet
+        global x,y
+        global tilter
+        #read the text file
+        #data=file.read()
+        #calculate number of pages
+        nn=len(data)//900
+        #print(nn)
+        # print(len(data))
+        chunks,chunkysize=len(data),len(data)//nn+1
+        p=[data[i:i+chunkysize] for i in range(0,chunks,chunkysize)]
 
-            for i in range(0,len(p)):
-                Word(p[i])
-                img.save("%doutt.png"%i)
-                bgnum=random.randint(1,4)
-                img1=Image.open("file\\bg%s.jpg"%bgnum)
-                img=img1
-                sizeOfSheet=img.width
-                x,y=100,120
+        for i in range(0,len(p)): 
+            Word(p[i])
+            img.save("output\\%doutt.png"%i)
+            bgnum=random.randint(1,4)
+            img1=PIL.Image.open("res\\bg%s.jpg"%bgnum)
+            img=img1
+            sizeOfSheet=img.width
+            x,y=100,120
     except ValueError as E:
         print("{}\nTry again",format(E))
     imageList=[]
     for i in range(0,len(p)):
-        imageList.append("%doutt.png"%i)
+        imageList.append("output\\%doutt.png"%i)
 
-    cover=Image.open(imageList[0])
+    cover=PIL.Image.open(imageList[0])
     width,height=cover.size
     pdf=FPDF(unit="pt",format=[width,height])
     for i in range(0,len(imageList)):
         pdf.add_page()
         pdf.image(imageList[i],0,0)
-    pdf.output("newwy2.pdf","F")
+    pdf.output("output\\newwy2.pdf","F")
     print("Done")
+    showinfo(title="Information", message="Completed")
+    
+
+
+def cheak(func):
+	def inner():
+		rule = str("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890 ")
+		data = text_box.get('1.0', 'end')
+		w.config(text ="Working on it...")
+		try:
+			if len(data) >= 898:
+				func()
+				redefine()
+				script(data)
+				w.config(text ="Text to Handwriting")
+				
+			else:
+				showerror(title="Failed", message="Please follow rules!")
+		except Exception as e:
+			showerror("Error ", e)
+	return inner
+
+@cheak
+def hand_write():
+	print("hooray")
+
+def info1():
+	try:
+		rule = str("Rules: \n\n I)Allowed characters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'\nAny characters except these will be skipped\n\nII) Minimum of 900 charachters.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After hitting 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\n This is an Open-souce software. Do a visit to our Git-Hub for more information!!")
+		showinfo(title="Information", message=rule)
+	except Exception as e:
+		showerror("Error", e)
+
+def callback():
+    webbrowser.open_new("https://github.com/divya-shiv-pandey/Scriptor")
 
 
 
+f = ("Arial", 15, "bold")
+f1 = ("Arial", 12, "bold")
+root = Tk()
+root.title('SCRIPTOR')
+root.minsize(600,575)
+root.geometry('600x575')
+
+style = darkstyle(root)
+
+imgn = ImageTk.PhotoImage(PIL.Image.open("res\\img.ico"))
+panel = tk.Label(root, image = imgn, height = 30)
+panel.pack(side = "top", fill = "both", expand = "yes")
+
+w = LabelFrame(root, text = "Text to Handwriting", font=f)
+w.pack(fill="both", expand = "yes")
+text_box = Text(w, wrap = WORD)
+text_box.insert(END, 'Type here..')
 
 
+frame = Frame(root)
+ww = LabelFrame(root)  
+ww.pack(fill="both", expand = "yes") 
+write = ttk.Button(ww, text = "Write", width = 20, style="Accentbutton", command = hand_write)
+info = ttk.Button(ww, text = "Rules", width = 10, style="Accentbutton", command = info1)
+git = ttk.Button(ww, text = "Git", width = 10, style="Accentbutton", command = callback)
+
+
+vbar = Scrollbar(w,orient=VERTICAL)
+vbar.pack(side=RIGHT, fill=Y)
+vbar.config(command=text_box.yview)
+
+hbar = Scrollbar(w, orient=HORIZONTAL)
+hbar.pack(side=BOTTOM, fill=X)
+hbar.config(command=text_box.xview)
+
+text_box.config(xscrollcommand=hbar.set, yscrollcommand=vbar.set)
+
+text_box.pack(fill="both", expand="yes")
+frame.pack()
+#write.grid(row = 0, column = 2, pady = margin_size_height, columnspan = 2)
+write.place(relx=0.5, rely=0.5, anchor=CENTER)
+info.place(relx=0.0, rely=0.5, anchor=W)
+git.place(relx=1.0, rely=.5, anchor=E)
+
+root.mainloop()
+
+
+if __name__=='__main__':
+    #ui()
+    print("EXITING")
