@@ -18,7 +18,7 @@ The excutable is created using auto-py-to-exe.
 
 
 ## Folder/File structure is as follows
-#### FILE: 
+#### RES: 
 It contains letter's image dataset used by script to write.
 #### OUTPUT:
 The generated PDF and images of hand written page by the script is stored in this folder.
