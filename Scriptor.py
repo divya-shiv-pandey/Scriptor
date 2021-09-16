@@ -115,7 +115,28 @@ def Word(Input):
             Letters(i)
         Write('space')
 
-def script(data):
+def cheak(func):
+	def inner():
+		rule = str("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890 ")
+		data = text_box.get('1.0', 'end')
+		w.config(text ="Working on it...")
+		try:
+			if len(data) >= 898:
+				func()
+				redefine()
+				
+			else:
+				showerror(title="Failed", message="Please follow rules!")
+		except Exception as e:
+			showerror("Error ", e)
+		
+	return inner
+
+
+@cheak
+def script():
+    data = text_box.get('1.0', 'end')
+    w.config(text ="Working on it...")
     try:
         global img
         global bgnum
@@ -157,39 +178,18 @@ def script(data):
         pdf.image(imageList[i],0,0)
     pdf.output("output\\newwy2.pdf","F")
     print("Done")
-    res = askquestion('Completed', 'Do you want to open the folder?')
+    res = askquestion('Sucess', 'Open destination folder?')
     if res == 'yes':
         os.system('start '+sys.path[0]+'\output\ ')
     else:
-        showinfo(title="Information", message="Thank you")
+        showinfo(title="Success", message="Text converted! You can find them in output folder.")
+    w.config(text ="Text to Handwriting")
     
 
 
-def cheak(func):
-	def inner():
-		rule = str("QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890 ")
-		data = text_box.get('1.0', 'end')
-		w.config(text ="Working on it...")
-		try:
-			if len(data) >= 898:
-				func()
-				redefine()
-				script(data)
-				w.config(text ="Text to Handwriting")
-				
-			else:
-				showerror(title="Failed", message="Please follow rules!")
-		except Exception as e:
-			showerror("Error ", e)
-	return inner
-
-@cheak
-def hand_write():
-	print("hooray")
-
 def info1():
 	try:
-		rule = str("Rules: \n\n I)Allowed characters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'\nAny characters except these will be skipped\n\nII) Minimum of 900 charachters.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After hitting 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\n This is an Open-souce software. Do a visit to our Git-Hub for more information!!")
+		rule = str("Rules: \n\n I)Allowed characters:\n'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm(),.?;1234567890'\n\nAny characters except these will be skipped\n\nII) Minimum of 900 charachters.\n\nIII) Use it at your own risk. Do not use for illegal purpose or misconduct, authors will not be responsible.\n\nIV) After clicking 'WRITE' wait patiently, it takes around 1 to 10 seconds to execute depeending upon length of text.\n\n This is an Open-souce software. Do a visit to our Git-Hub for more information!!")
 		showinfo(title="Information", message=rule)
 	except Exception as e:
 		showerror("Error", e)
@@ -222,7 +222,7 @@ text_box.insert(END, 'Type here..')
 frame = Frame(root)
 ww = LabelFrame(root)  
 ww.pack(fill="both", expand = "yes") 
-write = ttk.Button(ww, text = "Write", width = 20, style="Accentbutton", command = hand_write)
+write = ttk.Button(ww, text = "Write", width = 20, style="Accentbutton", command = script)
 info = ttk.Button(ww, text = "Rules", width = 10, style="Accentbutton", command = info1)
 git = ttk.Button(ww, text = "Git", width = 10, style="Accentbutton", command = callback)
 
