@@ -2,13 +2,11 @@
 Text to Handwriting converter. Enter text and generate hand written PDF document in seconds.
 
 ## HOW TO USE
-### Step 1: 
-Download the installer and install it normaly, make sure to make desktop shortcut.
+#### Step 1: 
+Download the installer and install it normaly, make sure to make desktop shortcut. Run Scriptor.exe
 #### Step 2:
-Run Scriptor.exe
-#### Step 3:
 Write/Paste text in text box  that is to be converted to hand writing.  Hit WRITE and wait patiently for program to execute
-#### Step 4:
+#### Step 3:
 WALLAH! Handwritten pages and PDF is stored in the OUTPUT folder. ENJOY :)
 
 
