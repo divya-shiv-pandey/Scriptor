@@ -11,6 +11,8 @@ Write/Paste text in text box  that is to be converted to hand writing.  Hit WRIT
 #### Step 3:
 WALLAH! Handwritten pages and PDF is stored in the same folder where Scriptor is located. ENJOY :)
 
+![Scriptor UI](https://i.ibb.co/G20dKXP/Scriptor.jpg)
+![Output](https://i.ibb.co/NNHKS2S/0outt.png)
 
 ## HOW IT WORKS
 To convert text to handwriting it has pre-stored letters, numbers and characters cropped as small png to create a dateset, reads the text and starts placing these letters accordingly on a blank white background. 
